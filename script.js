@@ -295,10 +295,135 @@
 // console.log(c);// const also block scope
 
 // shadowing
+// var a = 100;
+// {
+//     var a =10; this is the shadowinfg of a variable
+//     console.log(a);
+// }
+// console.log(a);// same 10 output will be return because the 301line a varibale shadow od line no 297
 
-var a = 100;
-{
-    var a =10;
-    console.log(a);
-}
-console.log(a);
+// reduce
+
+// const user = [
+//     { firstname: "Mohammad", lastname: "Noushad", age: 22 },
+//     { firstname: "Aniket", lastname: "Bhalla", age: 45 },
+//     { firstname: "Bidhi", lastname: "Chand", age: 21 },
+//     { firstname: "Saif", lastname: "Siddiqi", age: 67 },
+//   ];
+
+//   const output = user.reduce((acc,cur)=>{
+//     if(cur.age > 30){
+//     acc.push(cur.firstname);
+//     }
+//     return acc;
+//   },[])  // push method only work for the array 
+
+//   console.log(output);
+
+  // its work reduce reduce is takes two parametter a accumalater and current 
+  //the accumaleter is an enisail value the current its  takes an the array or obj value .
+
+  // polifile for bind 
+
+//   const user = [
+//       { firstname: "Mohammad", lastname: "Noushad", age: 22 },
+//         { firstname: "Aniket", lastname: "Bhalla", age: 45 },
+//         { firstname: "Bidhi", lastname: "Chand", age: 21 },
+//         { firstname: "Saif", lastname: "Siddiqi", age: 67 },
+//       ];
+
+//       let printname = function(){
+//           console.log(this.firstname + " "+ this.lastname);
+//       };
+
+// Function.prototype.mybind = function (...arg){
+//       let obj = this; // it represnt to the obj it mean it search the printname
+//        let params = arg.slice(1);
+//     return function(...erg1){
+//       obj.apply(arg[0],[...params,...erg1]);
+//     }
+// }
+
+// for(i=0;i<user.length;i++){
+//      value = printname.mybind(user[i]);
+//      value();
+// }
+// def: 
+//  own implementation of bynd method to resolve browser fall back that it....
+
+// DEBOUNCING
+
+// var debounce = function(fn, time){
+
+//     let timeoutID;
+//     return function(...arg){
+//         if(timeoutID){
+//             clearTimeout (timeoutID)
+//         }
+       
+//     timeoutID =  setTimeout(()=>{
+//       fn(...arg);
+//      },time);
+//     }
+// }
+
+// document.getElementById('click').addEventListener('click',debounce(e=>{
+//    console.log('hai their');
+// },2000));
+
+//polifill revision ok
+// const user = [    
+//         { firstname: "Mohammad", lastname: "Noushad", age: 22 },
+//           { firstname: "Aniket", lastname: "Bhalla", age: 45 },
+//           { firstname: "Bidhi", lastname: "Chand", age: 21 },
+//           { firstname: "Saif", lastname: "Siddiqi", age: 67 },
+//         ];
+  
+//         let printname = function(){
+//             console.log(this.firstname + " "+ this.lastname);
+//         };
+
+// Function.prototype.mybind = function (...argum){
+//     let object_catch = this;
+//     let paramettrs_handel = argum.splice(1);
+//   return function(...argum1){
+//     object_catch.apply(argum[0],[...paramettrs_handel,...argum1]);
+//   }
+// }
+
+// for(i=0;i<user.length;i++){
+//   var value = printname.mybind(user[i]);
+//   value();
+// }
+// debouncing revision ok 
+
+// var debounce = function(fn,time){
+
+//   let timer;
+//   return function (...arg){
+//     if(timer){
+//       clearTimeout(timer);
+//     }
+//    timer = setTimeout(()=>{
+//     fn(...arg);
+//     },time);
+//   }
+// }
+
+// document.getElementById('click').addEventListener('click', debounce(e=>{
+//    console.log("correct way to work the debouncing");
+// },2000))
+
+//event bubbling and capturing 
+document.getElementById('grandparet').addEventListener('click',(e)=>{
+  console.log("grandparent will here");
+},false);//bubbling
+
+document.getElementById('parent').addEventListener('click',(e)=>{
+  console.log("parent will here");
+},true);// capturing
+
+document.getElementById('child').addEventListener('click',(e)=>{
+  console.log("child will here");
+  e.stopPropagation(); // event will as the only event will run bubbling and caputring will not cross 
+},false);
