@@ -442,9 +442,32 @@
 
   // second example of delication
 
-  document.querySelector('#from').addEventListener('keyup', (e)=>{
-    console.log(e)
-     if(e.target.dataset.uppercase != undefined){
-         e.target.value = e.target.value.toUpperCase();
-     }
-  });
+  // document.querySelector('#from').addEventListener('keyup', (e)=>{
+  //   console.log(e)
+  //    if(e.target.dataset.uppercase != undefined){
+  //        e.target.value = e.target.value.toUpperCase();
+  //    }
+  // });
+       
+  //sum amazon question example 
+    // function sum(a){
+    //     return function(b){
+    //         if(b){
+    //           return sum(a+b);
+    //         }
+    //         return a;
+    //     }
+    // }
+   
+    // console.log( sum(1)(2)(3)(4)(5)());
+
+    // factroil 
+
+    function sua(a){
+       if( a == 0){
+        return 1;
+       }
+       return a + sua(a - 1);
+    }
+
+   console.log( sua(10));
