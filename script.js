@@ -415,15 +415,36 @@
 // },2000))
 
 //event bubbling and capturing 
-document.getElementById('grandparet').addEventListener('click',(e)=>{
-  console.log("grandparent will here");
-},false);//bubbling
+// document.getElementById('grandparet').addEventListener('click',(e)=>{
+//   console.log("grandparent will here");
+// },false);//bubbling
 
-document.getElementById('parent').addEventListener('click',(e)=>{
-  console.log("parent will here");
-},true);// capturing
+// document.getElementById('parent').addEventListener('click',(e)=>{
+//   console.log("parent will here");
+// },true);// capturing
 
-document.getElementById('child').addEventListener('click',(e)=>{
-  console.log("child will here");
-  e.stopPropagation(); // event will as the only event will run bubbling and caputring will not cross 
-},false);
+// document.getElementById('child').addEventListener('click',(e)=>{
+//   console.log("child will here");
+//   e.stopPropagation(); // event will as the only event will run bubbling and caputring will not cross 
+// },false);
+
+// bubbling use bubbling up mean you click the child print child,parent,grand parent
+// the bubbling traget from the target to the root and capture traget from  the root to the target
+
+//event delication 
+
+// document.querySelector('#container').addEventListener('click',(e)=>{
+//   console.log(e.target.innerText);
+//   if(e.target.tagName == "LI"){
+//     window.location.href = "./" + e.target.id;
+//   }
+// }); first examplwe of event delication
+
+  // second example of delication
+
+  document.querySelector('#from').addEventListener('keyup', (e)=>{
+    console.log(e)
+     if(e.target.dataset.uppercase != undefined){
+         e.target.value = e.target.value.toUpperCase();
+     }
+  });
