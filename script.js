@@ -192,7 +192,7 @@
 // class is an collection of object and collection of information
 // object is an run time instance of an class or real entity of an class
 
-// inharitance
+// inharitance------------------------------------------------------
 // class vallet{
 //     keys(money,coines,card){
 //       this.m=money;
@@ -235,7 +235,7 @@
 //     this.card = 40;
 //   }
  
-//polimorpesam
+//polimorpesam-------------------------------------
 
 // class poolu{
 //     fun(){
@@ -256,7 +256,7 @@
 // exp the parrent class function any modify is used an child class its polimorpsam .
 
 
-//data abstraction extract only relevent information  - definition of data abstraction
+//data abstraction extract only relevent information  - definition of data abstraction-----------------------
 // class amp{
 //     constructor(){
 //         this.storage ={}
@@ -280,7 +280,7 @@
 
 //extraction only relevent information it means many statment will hear the class 
 
-//block scope
+//block scope--------------------------------------
 // {
 //     var a = 10;
 //     let b = 20;
@@ -294,7 +294,7 @@
 // console.log(b);// is hthe block scope only access the separate block
 // console.log(c);// const also block scope
 
-// shadowing
+// shadowing------------------------------
 // var a = 100;
 // {
 //     var a =10; this is the shadowinfg of a variable
@@ -302,7 +302,7 @@
 // }
 // console.log(a);// same 10 output will be return because the 301line a varibale shadow od line no 297
 
-// reduce
+// reduce------------------------------------------------
 
 // const user = [
 //     { firstname: "Mohammad", lastname: "Noushad", age: 22 },
@@ -323,7 +323,7 @@
   // its work reduce reduce is takes two parametter a accumalater and current 
   //the accumaleter is an enisail value the current its  takes an the array or obj value .
 
-  // polifile for bind 
+  // polifile for bind -------------------------------------------
 
 //   const user = [
 //       { firstname: "Mohammad", lastname: "Noushad", age: 22 },
@@ -351,7 +351,7 @@
 // def: 
 //  own implementation of bynd method to resolve browser fall back that it....
 
-// DEBOUNCING
+// DEBOUNCING------------------------------------------
 
 // var debounce = function(fn, time){
 
@@ -371,7 +371,7 @@
 //    console.log('hai their');
 // },2000));
 
-//polifill revision ok
+//polifill revision ok------------------------------
 // const user = [    
 //         { firstname: "Mohammad", lastname: "Noushad", age: 22 },
 //           { firstname: "Aniket", lastname: "Bhalla", age: 45 },
@@ -395,7 +395,7 @@
 //   var value = printname.mybind(user[i]);
 //   value();
 // }
-// debouncing revision ok 
+// debouncing revision ok ----------------------------------
 
 // var debounce = function(fn,time){
 
@@ -414,7 +414,7 @@
 //    console.log("correct way to work the debouncing");
 // },2000))
 
-//event bubbling and capturing 
+//event bubbling and capturing ---------------------------------------------
 // document.getElementById('grandparet').addEventListener('click',(e)=>{
 //   console.log("grandparent will here");
 // },false);//bubbling
@@ -431,7 +431,7 @@
 // bubbling use bubbling up mean you click the child print child,parent,grand parent
 // the bubbling traget from the target to the root and capture traget from  the root to the target
 
-//event delication 
+//event delication -------------------------------------------
 
 // document.querySelector('#container').addEventListener('click',(e)=>{
 //   console.log(e.target.innerText);
@@ -449,7 +449,7 @@
   //    }
   // });
        
-  //sum amazon question example 
+  //sum amazon question example --------------------------------
     // function sum(a){
     //     return function(b){
     //         if(b){
@@ -459,15 +459,63 @@
     //     }
     // }
    
-    // console.log( sum(1)(2)(3)(4)(5)());
+    // console.log( sum(1)(2)(3)(4)(5)());----------------------------------
 
     // factroil 
 
-    function sua(a){
-       if( a == 0){
-        return 1;
-       }
-       return a + sua(a - 1);
-    }
+  //   function sua(a){
+  //      if( a == 0){
+  //       return 1;
+  //      }
+  //      return a + sua(a - 1);
+  //   }
 
-   console.log( sua(10));
+  //  console.log( sua(10));
+
+  //throttling and debouncing different between----------------------------------------
+
+  var input = document.getElementById('class');
+  var defaul = document.getElementById('default');
+  var debounc = document.getElementById('debounce');
+  var throtling = document.getElementById('throtling');
+
+  input.addEventListener('input', (e)=>{
+    defaul.textContent = e.target.value;
+    dobouncetext(e.target.value);
+    throtlin(e.target.value);
+  });
+
+  var dobouncetext = debounce(text =>
+    {
+    debounc.textContent = text;
+    },2000);
+
+    var throtlin = throttl(text =>{
+      throtling.textContent = text
+    },1000)
+
+
+  function debounce (fn, time){
+    let timeout;
+    return function(...argument){
+      if(timeout){
+        clearTimeout(timeout);
+      }
+      timeout = setTimeout(()=>{
+        fn(...argument);  
+      },time);
+    }
+  }
+function throttl (fn, time){
+  let timeout = false;
+   return function(...argument){
+       if(!timeout){
+           fn(...argument);
+           timeout=true;
+           setTimeout(()=>{
+                timeout = false;
+           },time)
+       }
+   }
+}
+
